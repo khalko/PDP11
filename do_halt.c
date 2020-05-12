@@ -10,7 +10,9 @@ void do_mov() {
 	w_write(dd.adr, ss.val);
 }
 void do_add() {}
-void do_halt() {}
+void do_halt() {
+	exit(0);
+}
 
 Arg get_mr(word w) {
 	Arg res;
