@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <assert.h>
 #include <stdlib.h>
+#include <assert.h>
+#include "run.c"
 
 typedef unsigned char byte;  //8 bit
 typedef unsigned short int word;  // 16 bit
@@ -19,7 +20,7 @@ word w_read(Adress adr);
 
 int main() {
 	
-	
+	run();	
 
 	return 0;
 }
