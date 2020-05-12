@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include "run.c"
+#include "do_halt.c"
 
 typedef unsigned char byte;  //8 bit
 typedef unsigned short int word;  // 16 bit
