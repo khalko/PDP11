@@ -1,0 +1,18 @@
+b_write(5, 0x0b); // пишем байт читаем байт
+byte bres = b_read(5);
+assert(bres == 0x0b);
+
+w_write(4, 0x0b0a); // пишем слово читаем слово
+word wres = w_read(4);
+assert(wress == 0x0b0a);
+
+w_write(4, 0x0b0a); //пишем слово читаем отдельный байт
+bres = b_read(5);
+assert(0x0b == bres);
+bres = b_read(4);
+assert(0x0a == 	bres);
+
+b_write(4, 0x0a); //пишем два байта читаем слово 
+b_write(5, 0x0b);
+wres = w_read(4);
+assert(0x0b0a == wres);	
