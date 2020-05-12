@@ -16,10 +16,7 @@ void w_write(Adress adr, word w);
 word w_read(Adress adr);
 
 int main() {
-	b_write(4, 0x0a);
-	b_write(3, 0x0b);
-	word wres = w_read(4);
-	printf("%04hhx\n", wres);
+	
 	
 
 	return 0;
@@ -40,7 +37,7 @@ word w_read(Adress a) {
 }
 
 void w_write(Adress adr, word w) {
-	mem[adr++] = w >> 8;
+	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
 
