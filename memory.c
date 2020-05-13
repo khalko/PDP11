@@ -26,10 +26,12 @@ void r() {
 	printf("\n");
 }
 
-struct Arg {
+typedef struct{
 	word val;
 	word adr;
-} ss, dd;
+} Arg;
+
+Arg ss, dd;
 
 void do_mov() {
 	w_write(dd.adr, ss.val);
@@ -39,8 +41,8 @@ void do_halt() {
 	exit(0);
 }
 
-struct Arg get_mr(word w) {
-	struct Arg res;
+Arg get_mr(word w) {
+	Arg res;
 	int r = w & 7;
 	int mode = (w >> 3) & 7;
 	switch(mode) {
@@ -99,15 +101,17 @@ void run() {
 		do_halt();
 	}
 	else if ((w & 0170000) == 0010000) {
-		printf("mov \n");
+		printf("mov ");
+		ss = get_mr((word)(w >> 6));
+		dd = get_mr(w);
 		do_mov();
 	}
 		else if ((w & 0170000) == 0060000) {
-			printf("add \n");
+			printf("add ");
 			do_add();
 		}
 			else {
-				printf("unknow \n");
+				printf("unknow ");
 			}
 	r();
 }
@@ -140,5 +144,6 @@ void w_write(Adress adr, word w) {
 	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
+
 
 
