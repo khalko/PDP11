@@ -57,16 +57,24 @@ struct Arg get_mr(word w) {
 	}
 	return res;
 }
-void load_file() {
-	int i;
-	word w;
-	scanf("%hx %x", &pc, &i);
-	while (i > 0) {
-		scanf("%hx", &w);
-		w_write(pc, w);
-		pc += 2;
-		i--;
-	}
+
+void load_file(){
+    Adress address;
+    unsigned short int n;
+    byte k = 0x00;
+    int i;
+    int j = 2;
+    while(1) {
+
+        j = scanf("%04hx%04hx", &address, &n);
+        if(j != 2){
+            break;
+        }
+        for (i = 0; i < n; i++) {
+            scanf("%02hhx", &k);
+            b_write(address + i, k);
+        }
+    }
 }
 
 
@@ -78,26 +86,28 @@ void run() {
 		printf("%06o %06o: ", pc, w);
 		pc += 2;
 	if (w == 0) {
-		printf("halt ");
+		printf("halt \n");
 		do_halt();
 	}
 	else if ((w & 0170000) == 0010000) {
-		printf("mov ");
+		printf("mov \n");
 		do_mov();
 	}
 		else if ((w & 0170000) == 0060000) {
-			printf("add ");
+			printf("add \n");
 			do_add();
 		}
 			else
-				printf("unknow ");
+				printf("unknow \n");
 }
 }
 
 int main() {
 	load_file();
-	run();	
-
+	run();
+	word w;
+	w = w_read(01010);	
+	printf("04%o", w);
 	return 0;
 }
 
