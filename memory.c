@@ -108,6 +108,8 @@ void run() {
 	}
 		else if ((w & 0170000) == 0060000) {
 			printf("add ");
+			ss = get_mr((word)(w >> 6));
+			dd = get_mr(w);
 			do_add();
 		}
 			else {
@@ -144,6 +146,7 @@ void w_write(Adress adr, word w) {
 	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
+
 
 
 
