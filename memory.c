@@ -22,6 +22,8 @@ void r() {
 	while(i <= 7) {
 		printf("r%d: %o ", i, reg[i]);
 		i++;
+	}
+	printf("\n");
 }
 
 struct Arg {
@@ -105,7 +107,8 @@ void run() {
 			do_add();
 		}
 			else {
-				printf("unknow \n");}
+				printf("unknow \n");
+			}
 	r();
 }
 }
@@ -137,4 +140,5 @@ void w_write(Adress adr, word w) {
 	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
+
 
