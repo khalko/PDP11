@@ -17,6 +17,13 @@ byte b_read(Adress adr);
 void w_write(Adress adr, word w);
 word w_read(Adress adr);
 
+void r() {
+	int i = 0;
+	while(i <= 7) {
+		printf("r%d: %o ", i, reg[i]);
+		i++;
+}
+
 struct Arg {
 	word val;
 	word adr;
@@ -97,8 +104,9 @@ void run() {
 			printf("add \n");
 			do_add();
 		}
-			else
-				printf("unknow \n");
+			else {
+				printf("unknow \n");}
+	r();
 }
 }
 
