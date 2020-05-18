@@ -34,11 +34,9 @@ typedef struct{
 Arg ss, dd;
 
 void do_mov() {
-	w_write(dd.adr, ss.val);
+	reg[dd.adr] = ss.val;
 }
 void do_add() {
-	reg[0] = 1;
-	reg[1] = 2;
 	reg[dd.adr] = dd.val + ss.val; 
 }
 void do_halt() {
@@ -150,6 +148,7 @@ void w_write(Adress adr, word w) {
 	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
+
 
 
 
