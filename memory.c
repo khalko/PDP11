@@ -34,10 +34,16 @@ typedef struct{
 Arg ss, dd;
 
 void do_mov() {
-	reg[dd.adr] = ss.val;
+	if (dd.adr > 8) 
+		mem[dd.adr] = ss.val;
+	else 
+		reg[dd.adr] = ss.val;
 }
 void do_add() {
-	reg[dd.adr] = dd.val + ss.val; 
+	if (dd.adr > 8)  
+		mem[dd.adr] = ss.val + dd.val;
+	else
+		reg[dd.adr] = ss.val + dd.val; 
 }
 void do_halt() {
 	exit(0);
@@ -148,6 +154,7 @@ void w_write(Adress adr, word w) {
 	mem[adr+1] = w >> 8;
 	mem[adr] = w << 8;
 }
+
 
 
 
